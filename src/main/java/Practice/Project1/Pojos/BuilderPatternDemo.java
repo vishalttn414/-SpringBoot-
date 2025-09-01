@@ -4,8 +4,8 @@ class User {
     private final String name;
     private final String email;
 
-    private final int age;
-    private final String phoneNumber;
+    private  int age;
+    private  String phoneNumber;
 
     private User(Builder builder) {
         this.name = builder.name;
@@ -22,7 +22,7 @@ class User {
         private int age;
         private String phoneNumber;
 
-         Builder(String name, String email) {
+         public Builder(String name, String email) {
             this.name = name;
             this.email = email;
         }

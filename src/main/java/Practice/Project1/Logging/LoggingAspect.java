@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class LoggingAspect {
 
-
     @Around("execution(* Practice.Project1..*(..))")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();

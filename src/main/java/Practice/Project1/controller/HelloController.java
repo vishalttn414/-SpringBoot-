@@ -11,7 +11,7 @@ public class HelloController {
         return "Hello " + name;
     }
     @PostMapping("/greet/{named}")
-    public ResponseEntity greet(@RequestBody GreetRequest req) {
+    public ResponseEntity<?> greet(@RequestBody GreetRequest req) {
         return ResponseEntity.ok("hi "+req.getName());
     }
 }

@@ -9,6 +9,5 @@ public class Address {
     private String street;
     private String colony;
     private String landmark;
-
 }
 

@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.web.bind.annotation.*;
-import java.util.List;
 
 @Tag(name = "User Management", description = "Operations related to managing users")
 @RestController
@@ -75,7 +74,8 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Invalid user data provided"),
             @ApiResponse(responseCode = "404", description = "User not found")
     })
-    @PostMapping("/update")
+
+    @PutMapping("/update")
     public User updateUser(
             @Parameter(description = "Updated user object", required = true)
             @RequestBody User user) {

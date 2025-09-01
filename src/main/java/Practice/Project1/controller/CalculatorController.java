@@ -15,8 +15,7 @@ public class CalculatorController {
     }
 
     @PostMapping("/multiply")
-    public ResponseEntity multiply(@RequestBody MultHelper multHelper){
+    public ResponseEntity<?> multiply(@RequestBody MultHelper multHelper){
         return ResponseEntity.ok(multHelper.getProduct());
     }
-
 }

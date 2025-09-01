@@ -29,13 +29,8 @@ public class UserService {
     }
 
     public String deleteUser(String id){
-        User user=getUser(id);
-        if(user==null){
-            throw new RuntimeException("No user found with the given ID");
-        }else{
-            dynamoDBMapper.delete(user);
+            dynamoDBMapper.delete(id);
             return "user deleted Successfully";
-        }
     }
 
     public User updateUser(User newUser) {
