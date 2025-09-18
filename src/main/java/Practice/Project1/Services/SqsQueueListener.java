@@ -1,19 +1,27 @@
 package Practice.Project1.Services;
 
+import Practice.Project1.entity.Item;
 import io.awspring.cloud.sqs.annotation.SqsListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SqsQueueListener {
-         private String sqsMessage;
 
-//        @SqsListener("sqs-queue")  // 👈 use queue name, not full URL
-//        public void listen(String message) {
-//            System.out.println("Messgae " + message);
-//            sqsMessage=message;
-//        }
+    @Autowired
+    private  RedisElasticCacheService redisElasticCacheService;
 
-        public String getSqsMessage(){return sqsMessage;}
+    @SqsListener("user-cache-details")
+    public void userCacheListener(Item item) {
+        System.out.println("Received Message for user..." + item.getName());
+        try{
+            redisElasticCacheService.save(item);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        System.out.println("Save Message in Cache");
+    }
 }
 
 
