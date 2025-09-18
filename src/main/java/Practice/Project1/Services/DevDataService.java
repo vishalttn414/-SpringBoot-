@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 @Profile("dev")
 public class DevDataService implements DataService {
 
-    @Value("${app.message}")
-    private String message;
-
-    @Value("${username}")
-    private String username;
-
-    @Value("${demoword}")
-    private String demoword;
+//    @Value("${app.message}")
+//    private String message;
+//
+//    @Value("${username}")
+//    private String username;
+//
+//    @Value("${demoword}")
+//    private String demoword;
 
     private static final Logger logger = LoggerFactory.getLogger(DevDataService.class);
 
@@ -27,6 +27,6 @@ public class DevDataService implements DataService {
         logger.info("Test endpoint called");
         logger.debug("Debug message for /test");
         logger.error("This is a simulated error log");
-        return "Logging test successful!"+username+"   "+demoword;
+        return "Logging test successful!";
     }
 }
