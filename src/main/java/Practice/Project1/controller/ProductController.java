@@ -2,11 +2,15 @@ package Practice.Project1.controller;
 
 import Practice.Project1.Services.ProductService;
 import Practice.Project1.entity.Product;
+import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
+
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
 @RequestMapping("/products")
@@ -19,10 +23,13 @@ public class ProductController {
     }
 
     @GetMapping("/id/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable String id) {
+    public ResponseEntity<EntityModel<Product>> getProductById(@PathVariable String id) {
         Product product = productService.find(id);
+        EntityModel<Product> entityModel=EntityModel.of(product);
+        WebMvcLinkBuilder links=WebMvcLinkBuilder.linkTo(methodOn(this.getClass()).listAllProducts());
+        entityModel.add(links.withRel("all-Products"));
         if(product==null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(entityModel);
     }
 
     @PostMapping("/add")
