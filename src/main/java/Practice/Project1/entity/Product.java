@@ -6,6 +6,7 @@ import Practice.Project1.CustomAnnotation.PiiMaskSerializer;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.aggregation.ArithmeticOperators;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class Product {
     @Id
     private String id;
